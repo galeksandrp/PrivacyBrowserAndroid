@@ -4460,7 +4460,7 @@ class MainWebViewActivity : AppCompatActivity(), CreateBookmarkDialog.CreateBook
                 // Update the view pager when it has quiesced.  Otherwise, if a page launched by a new intent on restart has not yet been created, the view pager will not be updated to match the tab layout.
                 webViewViewPager2.post {
                     // Select the same page in the view pager.
-                    webViewViewPager2.currentItem = tab.position
+                    webViewViewPager2.setCurrentItem(tab.position, false)
 
                     // Set the current WebView after the tab layout has quiesced (otherwise, sometimes the wong WebView might be used).  See <https://redmine.stoutner.com/issues/1136>
                     tabLayout.post {

@@ -44,6 +44,15 @@ android {
         jvmTarget = 17
     }
 
+    signingConfigs {
+        release {
+            storeFile file(System.getenv("KSTOREFILE"))
+            storePassword System.getenv("KSTOREPWD")
+            keyAlias System.getenv("KEYALIAS")
+            keyPassword System.getenv("KEYPWD")
+        }
+    }
+
     buildTypes {
         debug {
             minifyEnabled false
@@ -54,6 +63,8 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
         }
     }
 
